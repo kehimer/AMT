@@ -1,0 +1,2 @@
+module PrioritysHelper
+end
