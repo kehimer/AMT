@@ -3,7 +3,30 @@ AMT::Application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  root 'home#index'
+
+  resources :results do
+    get "report", on: :member
+  end
+  resources :account_types, except: [:show, :destroy]
+
+  resources :administrations, only: [:index] do
+    resources :amttypes
+    resources :companys
+    resources :dimentions
+    resources :factors
+    resources :prioritys
+    resources :surveys
+    resources :technologys
+  end
+
+  resources :users, except: [:index, :destroy]
+
+  get "/login" => "sessions#new"#, as: :patito
+  post "/login" => "sessions#create"
+  get "/signup" => "users#new"#, as: :patito
+  post "/signup" => "users#create"
+  delete "/logout" => "sessions#destroy"
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

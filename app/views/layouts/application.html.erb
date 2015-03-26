@@ -10,10 +10,11 @@
 
 	<div id="topnav">
   <ul id="topnavlist">
-    <li><%= link_to "Home", root_path %></li>
+    <li><%= link_to "Inicio", root_path %></li>
     <% if current_user.present? %>
-      <li><%= link_to "Resultados", result_path(current_user.id) %></li>
-      <li><%= link_to "Mi Perfil", creator_petitions_path(current_user.id) %></li>
+      <li><%= link_to "Resultados", results_path %></li>
+      <li><%= link_to "Administracion", administrations_path %></li>
+      <li><%= link_to "Mi Perfil", user_path(current_user.id) %></li>
       <li><%= link_to "Logout", logout_path, method: :delete, class: "logout" %></li>
     <% else %>
       <li><%= link_to "Resultados", results_path %></li>

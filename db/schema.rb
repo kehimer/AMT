@@ -11,13 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150324163038) do
+ActiveRecord::Schema.define(version: 20150326192932) do
 
   create_table "amt_comments", force: true do |t|
     t.string   "comment"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "technology_id"
+    t.integer  "user_id"
   end
+
+  add_index "amt_comments", ["technology_id"], name: "index_amt_comments_on_technology_id"
+  add_index "amt_comments", ["user_id"], name: "index_amt_comments_on_user_id"
 
   create_table "amt_types", force: true do |t|
     t.string   "title"
@@ -40,20 +45,31 @@ ActiveRecord::Schema.define(version: 20150324163038) do
     t.integer  "weight"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "priority_id"
+    t.integer  "priorities_id"
   end
+
+  add_index "dimentions", ["priorities_id"], name: "index_dimentions_on_priorities_id"
+  add_index "dimentions", ["priority_id"], name: "index_dimentions_on_priority_id"
 
   create_table "factor_survey_results", force: true do |t|
     t.integer  "score"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "survey_result_id"
   end
+
+  add_index "factor_survey_results", ["survey_result_id"], name: "index_factor_survey_results_on_survey_result_id"
 
   create_table "factors", force: true do |t|
     t.string   "title"
     t.integer  "weight"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "dimention_id"
   end
+
+  add_index "factors", ["dimention_id"], name: "index_factors_on_dimention_id"
 
   create_table "priorities", force: true do |t|
     t.string   "title"
@@ -66,7 +82,10 @@ ActiveRecord::Schema.define(version: 20150324163038) do
     t.string   "filled_by"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "company_id"
   end
+
+  add_index "survey_results", ["company_id"], name: "index_survey_results_on_company_id"
 
   create_table "technologies", force: true do |t|
     t.text     "title"
@@ -77,7 +96,12 @@ ActiveRecord::Schema.define(version: 20150324163038) do
     t.integer  "weight"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "factor_id"
+    t.integer  "amt_type_id"
   end
+
+  add_index "technologies", ["amt_type_id"], name: "index_technologies_on_amt_type_id"
+  add_index "technologies", ["factor_id"], name: "index_technologies_on_factor_id"
 
   create_table "users", force: true do |t|
     t.string   "name"
@@ -87,6 +111,9 @@ ActiveRecord::Schema.define(version: 20150324163038) do
     t.string   "password_digest"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "company_id"
   end
+
+  add_index "users", ["company_id"], name: "index_users_on_company_id"
 
 end
