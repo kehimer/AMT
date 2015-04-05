@@ -23,6 +23,30 @@ class UsersController < ApplicationController
   end
 
   def show
+    if current_user.present?
+      @user = User.find(current_user.id)
+    else
+      redirect_to login_path
+    end
+  end
+
+  def edit
+   if current_user.present?
+      @user = User.find(current_user.id)
+    else
+      redirect_to login_path
+    end
+  end
+
+  def update
+    @user = User.find(current_user.id)
+
+    if @user.update(users_params)
+      redirect_to user_path(current_user.id),
+        flash: {notice: "Usuario editado exitosamente"}
+    else
+      render :edit
+    end
   end
 
   private
@@ -30,5 +54,7 @@ class UsersController < ApplicationController
     def users_params
       params.require(:user).permit!
     end
+
+
 
 end

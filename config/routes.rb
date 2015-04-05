@@ -8,16 +8,17 @@ AMT::Application.routes.draw do
   resources :results do
     get "report", on: :member
   end
-  resources :account_types, except: [:show, :destroy]
 
-  resources :administrations, only: [:index] do
     resources :amttypes
-    resources :companys
+    resources :companys, except: [:show, :destroy]
     resources :dimentions
     resources :factors
     resources :prioritys
     resources :surveys
     resources :technologys
+
+  resources :administrations, only: [:index] do
+    
   end
 
   resources :users, except: [:index, :destroy]

@@ -45,12 +45,10 @@ ActiveRecord::Schema.define(version: 20150326192932) do
     t.integer  "weight"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "priority_id"
     t.integer  "priorities_id"
   end
 
   add_index "dimentions", ["priorities_id"], name: "index_dimentions_on_priorities_id"
-  add_index "dimentions", ["priority_id"], name: "index_dimentions_on_priority_id"
 
   create_table "factor_survey_results", force: true do |t|
     t.integer  "score"

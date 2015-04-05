@@ -1,0 +1,21 @@
+
+= form_for @company do |f|
+
+  .form_row
+    = f.label :name, "Nombre"
+    = f.text_field :name
+
+  .form_row
+    = f.label :address, "Direccion"
+    = f.text_field :address
+
+  .form_row
+    = f.label :city, "Ciudad"
+    = f.select :city
+
+  .form_row
+    = f.label :phone, "Telefono"
+    = f.text_field :phone
+
+  .form_row
+    = f.submit

@@ -1,0 +1,19 @@
+%h2 Empresas
+%p Listado de Empresas
+
+- if flash[:notice].present?
+  .notice= flash[:notice]
+
+- if @companys.any?
+  %table{border: "1"}
+    %tr
+      %th Nombre
+      %th Direccion
+      %th Ciudad
+      %th Telefono
+      %th 
+    = render @companys
+- else
+  %em No hay ninguna empresa agregada
+
+%p= link_to "Nueva Empresa", new_company_path

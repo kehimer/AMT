@@ -7,4 +7,8 @@ has_many :amt_comments
 
 has_secure_password
 
+def self.permission_get
+  ["Admin", "Type1", "Type2"]
+end
+
 end

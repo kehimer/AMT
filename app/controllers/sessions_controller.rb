@@ -1,9 +1,9 @@
 class SessionsController < ApplicationController
-	kip_before_filter :authenticate 
+	skip_before_filter :authenticate 
 
   def new
     if current_user.present?
-      redirect_to clients_path
+      redirect_to user_path(current_user.id)
     end
   end
 

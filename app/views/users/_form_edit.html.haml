@@ -1,0 +1,17 @@
+
+= form_for @user do |f|
+
+  .form_row
+    = f.label :name, "Nombre"
+    = f.text_field :name
+
+  .form_row
+    = f.label :permission, "Permission"
+    = f.select :permission, User.permission_get
+
+  .form_row
+    = f.label :phone, "Phone"
+    = f.text_field :phone
+
+  .form_row
+    = f.submit
