@@ -16,13 +16,13 @@ class PrioritiesController < ApplicationController
     @priority = Priority.new(priorities_params)
 
     @totalPeso = Priority.sum(:weight)
-    @porcentaje = 0
+    @porcentaje = 0.0
 
-    if(@totalPeso > 0)
-      @porcentaje = @priority.weight / @totalPeso
+    if(@totalPeso > 0.0)
+      @porcentaje = @priority.weight.to_f / @totalPeso.to_f
     end
 
-    if (@porcentaje >= 0 and @porcentaje <= 1)
+    if (@porcentaje >= 0.0 and @porcentaje <= 1.0)
       if @priority.save
         redirect_to priorities_path,
           flash: {notice: "Prioridad creada exitosamente"}

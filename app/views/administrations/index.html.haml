@@ -1,7 +1,15 @@
-%p= link_to "Empresa", companies_path
+- if isadmin
+  %p= link_to "Empresa", companies_path
 %p= link_to "Prioridades", priorities_path
-%p= link_to "Dimensiones", dimentions_path
-%p= link_to "Factores", factors_path
-%p= link_to "Tipos AMT", amttypes_path
+
+- if isadmin
+  %p= link_to "Dimensiones", dimentions_path
+
+- if isadmin
+  %p= link_to "Factores", factors_path
+
+- if isadmin
+  %p= link_to "Tipos AMT", amt_types_path
+
 %p= link_to "Metodologias y Tecnologias", technologies_path
 %p= link_to "Encuestas", surveys_path

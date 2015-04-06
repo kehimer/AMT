@@ -1,0 +1,11 @@
+- if @notice.present?
+  %p= @notice
+
+= form_for @amt_type do |f|
+  
+  .form_row
+    = f.label :title, "Titulo"
+    = f.text_field :title
+  
+  .form_row
+    = f.submit

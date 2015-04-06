@@ -9,18 +9,20 @@ AMT::Application.routes.draw do
     get "report", on: :member
   end
 
-    resources :amttypes
-    resources :companies, except: [:show, :destroy]
-    resources :dimentions
-    resources :factors
-    resources :priorities
-    resources :surveys
+  resources :amt_types
+  resources :companies, except: [:show, :destroy]
+  resources :priorities
+  resources :dimentions
+  resources :factors do
     resources :technologies
-
-  resources :administrations, only: [:index] do
-    
   end
 
+  resources :technologies, only: [:index, :show, :destroy, :edit, :update] do
+    resources :amt_comments, only: [:new, :create]
+  end
+  resources :surveys
+  resources :administrations, only: [:index] do
+  end
   resources :users, except: [:index, :destroy]
 
   get "/login" => "sessions#new"#, as: :patito

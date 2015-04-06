@@ -1,0 +1,8 @@
+= render partial: "shared/errors", locals: {obj: @technology}
+
+%h2 Editar AMT
+
+%p Ingresa los datos del AMT a editar
+= render "form_edit"
+
+%p= link_to "Borrar", technology_path(@technology), method: :delete

@@ -1,0 +1,39 @@
+- if flash[:notice].present?
+  .notice= flash[:notice]
+
+%h2= @technology.title
+
+%p
+  %strong Descripcion
+  = @technology.weight
+
+%p
+  %strong Implantacion Sugerida
+  = @technology.weight
+
+%p
+  %strong Beneficios
+  = @technology.weight
+
+%p
+  %strong Otros
+  = @technology.weight
+
+- if current_user.present?
+  - if @amt_comments.any?
+    %p
+      %strong Comentarios
+    %table{border:"1"}
+      %tr
+        %th Comentario
+        %th Fecha Creacion
+        %th Usuario
+      = render partial: "amt_comments", collection: @amt_comments
+  - else
+    %em No hay comentarios para esta AMT
+
+- if isadmin
+  %p= link_to "Editar", edit_technology_path(@technology)
+
+- if isadmin_type2
+  %p= link_to "Nuevo Comentario", new_technology_amt_comment_path(@technology)

@@ -1,13 +1,7 @@
 - if flash[:notice].present?
   .notice= flash[:notice]
 
-%h2= @factor.title
-%p
-  %strong Titulo
-  = @factor.title
-%p
-  %strong Peso
-  = @factor.weight
+%h2= @amt_types.title
 
 - if @technologies.any?
   %p
@@ -18,8 +12,7 @@
       %th Descripcion
     = render partial: "technologies", collection: @technologies
 - else
-  %em No hay tecnologias para este factor
+  %em No hay tecnologias para este tipo AMT
 
 
-%p= link_to "Editar", edit_factor_path(@factor)
-%p= link_to "Nueva AMT", new_factor_technology_path(@factor)
+%p= link_to "Editar", edit_amt_type_path(@amt_types)

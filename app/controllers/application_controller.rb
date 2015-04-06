@@ -4,6 +4,8 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   #http_basic_authenticate_with name: "rails", password: "honduras"
   helper_method :current_user#, :metodo1, :metodo2
+  helper_method :isadmin#, :metodo1, :metodo2
+  helper_method :isadmin_type2#, :metodo1, :metodo2
   before_action :authenticate
 
   def current_user
@@ -22,4 +24,19 @@ class ApplicationController < ActionController::Base
       redirect_to login_path
     end
   end
+
+  def isadmin
+    @isadmin = false
+    if current_user.present?
+      @isadmin = (current_user.permission == "Admin")
+    end
+  end
+
+  def isadmin_type2
+    @isadmin_type2 = false
+    if current_user.present?
+      @isadmin = (current_user.permission == "Admin" or current_user.permission == "Type2")
+    end
+  end
+
 end

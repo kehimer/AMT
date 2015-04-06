@@ -1,2 +1,0 @@
-class AmttypesController < ApplicationController
-end

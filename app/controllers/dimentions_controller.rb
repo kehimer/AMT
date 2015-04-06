@@ -25,7 +25,10 @@ class DimentionsController < ApplicationController
   def create
     @dimention = Dimention.new(dimentions_params)
 
-    @totalPeso = Priority.find(@dimention.priority_id).sum(:weight)
+    @dimentions = Dimention.order(:weight)
+    q = @dimention.priority_id
+    @dimentions = @dimentions.where("dimentions.priority_id = #{q}")
+    @totalPeso = @dimentions.sum(:weight)
     @porcentaje = 0.0
 
     if(@totalPeso > 0.0)
@@ -52,7 +55,11 @@ class DimentionsController < ApplicationController
   def update
     @dimention = Dimention.find(params[:id])
 
-    @totalPeso = Priority.find(@dimention.priority_id).sum(:weight)
+    @dimentions = Dimention.order(:weight)
+    q = @dimention.priority_id
+    id = @dimention.id
+    @dimentions = @dimentions.where("dimentions.priority_id = #{q} and dimentions.id != #{id}")
+    @totalPeso = @dimentions.sum(:weight)
     @porcentaje = 0.0
 
     if(@totalPeso > 0.0)

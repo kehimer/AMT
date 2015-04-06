@@ -1,0 +1,7 @@
+%tr
+  %td= amt_comments.comment
+  %td= amt_comments.decorate_created_at
+  - if amt_comments.user.present?
+    %td= amt_comments.user.name
+  - else
+    %td= Anonimo

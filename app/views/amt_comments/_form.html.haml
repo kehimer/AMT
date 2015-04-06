@@ -1,0 +1,12 @@
+= render partial: "shared/errors", locals: {obj: @amt_comment}
+
+%p Ingresa los datos del nuevo Comentario
+
+= form_for [@technology, @amt_comment] do |f|
+  .form_row
+    = f.label :comment, "Comentario"
+    = f.text_field :comment
+  
+  %br
+  .form_row
+    = f.submit

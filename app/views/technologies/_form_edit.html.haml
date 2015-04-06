@@ -1,0 +1,33 @@
+
+= form_for @technology do |f|
+  .form_row
+    = f.label :title, "Titulo"
+    = f.text_field :title
+
+  .form_row
+    = f.label :description, "Descripcion"
+    = f.text_field :description
+
+  .form_row
+    = f.label :benefits, "Beneficios"
+    = f.text_field :benefits
+
+  .form_row
+    = f.label :others, "Otros"
+    = f.text_field :others
+
+  .form_row
+    = f.label :summary, "Summary"
+    = f.text_field :summary
+
+  .form_row
+    = f.label :weight, "Peso"
+    = f.text_field :weight
+
+  .form_row
+    = f.label :amt_type_id, "Tipo AMT"
+    = f.collection_select :amt_type_id, AmtType.order(:title).distinct, :id, :title,{} 
+ 
+  %br
+  .form_row
+    = f.submit

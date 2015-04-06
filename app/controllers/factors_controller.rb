@@ -59,7 +59,8 @@ class FactorsController < ApplicationController
 
     @factors = Factor.order(:weight)
     q = @factor.dimention_id
-    @factors = @factors.where("factors.dimention_id = #{q}")
+    id = @factor.id
+    @factors = @factors.where("factors.dimention_id = #{q} and factors.id != #{id}")
     @totalPeso = @factors.sum(:weight)
     @porcentaje = 0.0
 

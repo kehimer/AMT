@@ -1,0 +1,15 @@
+%h2 Tipos AMT
+%p Listado de Tipos AMT
+
+- if flash[:notice].present?
+  .notice= flash[:notice]
+
+- if @amt_types.any?
+  %table{border: "1"}
+    %tr
+      %th Titulo
+    = render @amt_types
+- else
+  %em No hay ningun tipo AMT agregado
+
+%p= link_to "Nuevo tipo AMT", new_amt_type_path
