@@ -1,0 +1,18 @@
+%h2 Factores
+%p Listado de Factores
+
+- if flash[:notice].present?
+  .notice= flash[:notice]
+
+- if @factors.any?
+  %table{border: "1"}
+    %tr
+      %th Prioridad
+      %th Dimension
+      %th Titulo
+      %th Peso
+    = render @factors
+- else
+  %em No hay ningun factor agregado
+
+%p= link_to "Nuevo Factor", new_factor_path

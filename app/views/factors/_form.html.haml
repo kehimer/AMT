@@ -1,0 +1,19 @@
+- if @notice.present?
+  %p= @notice
+
+= form_for @factor do |f|
+
+  .form_row
+    = f.label :title, "Titulo"
+    = f.text_field :title
+
+  .form_row
+    = f.label :weight, "Peso"
+    = f.text_field :weight
+
+    .form_row
+    = f.label :dimention_id, "Dimension"
+    = f.grouped_collection_select(:dimention_id, @priorities, :dimentions, :title, :id, :title)
+
+  .form_row
+    = f.submit

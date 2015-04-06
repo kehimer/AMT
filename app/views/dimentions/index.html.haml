@@ -1,0 +1,15 @@
+%h2 Dimensiones
+%p Listado de Dimensiones
+
+- if flash[:notice].present?
+  .notice= flash[:notice]
+
+- if @dimentions.any?
+  = render partial: "shared/filter_form", locals: {form_path: dimentions_path}
+        
+  .js_filtered_table
+    = render partial: "table", locals: {dimentions: @dimentions}
+- else
+  %em No hay ninguna dimension agregada
+
+%p= link_to "Nueva Dimension", new_dimention_path

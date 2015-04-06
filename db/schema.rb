@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150326192932) do
+ActiveRecord::Schema.define(version: 20150406012315) do
 
   create_table "amt_comments", force: true do |t|
     t.string   "comment"
@@ -45,10 +45,10 @@ ActiveRecord::Schema.define(version: 20150326192932) do
     t.integer  "weight"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "priorities_id"
+    t.integer  "priority_id"
   end
 
-  add_index "dimentions", ["priorities_id"], name: "index_dimentions_on_priorities_id"
+  add_index "dimentions", ["priority_id"], name: "index_dimentions_on_priority_id"
 
   create_table "factor_survey_results", force: true do |t|
     t.integer  "score"

@@ -1,0 +1,22 @@
+- if flash[:notice].present?
+  .notice= flash[:notice]
+
+%h2= @factor.title
+%p
+  %strong Titulo
+  = @factor.title
+%p
+  %strong Peso
+  = @factor.weight
+
+- if @technologies.any?
+  %table{border:"1"}
+    %tr
+      %th Titulo
+      %th Descripcion
+    = render partial: "technologies", collection: @technologies
+- else
+  %em No hay tecnologias para este factor
+
+
+%p= link_to "Editar", edit_factor_path(@factor)

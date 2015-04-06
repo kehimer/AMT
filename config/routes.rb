@@ -10,12 +10,12 @@ AMT::Application.routes.draw do
   end
 
     resources :amttypes
-    resources :companys, except: [:show, :destroy]
+    resources :companies, except: [:show, :destroy]
     resources :dimentions
     resources :factors
-    resources :prioritys
+    resources :priorities
     resources :surveys
-    resources :technologys
+    resources :technologies
 
   resources :administrations, only: [:index] do
     

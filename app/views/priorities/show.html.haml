@@ -1,0 +1,21 @@
+- if flash[:notice].present?
+  .notice= flash[:notice]
+
+%h2= @priority.title
+%p
+  %strong Titulo
+  = @priority.title
+%p
+  %strong Peso
+  = @priority.weight
+
+- if @dimentions.any?
+  %table{border:"1"}
+    %tr
+      %th Titulo
+      %th Peso
+    = render partial: "dimentions", collection: @dimentions
+- else
+  %em No hay dimensiones para esta prioridad
+
+%p= link_to "Editar", edit_priority_path(@priority)

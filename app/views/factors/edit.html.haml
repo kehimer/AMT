@@ -1,0 +1,8 @@
+= render partial: "shared/errors", locals: {obj: @factor}
+
+%h2 Editar Factor
+
+%p Ingresa los datos del factor a editar
+= render "form"
+
+%p= link_to "Borrar", factor_path(@factor), method: :delete

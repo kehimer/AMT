@@ -1,0 +1,19 @@
+- if @notice.present?
+  %p= @notice
+
+= form_for @dimention do |f|
+
+  .form_row
+    = f.label :title, "Titulo"
+    = f.text_field :title
+
+  .form_row
+    = f.label :weight, "Peso"
+    = f.text_field :weight
+
+  .form_row
+    = f.label :priority_id, "Prioridad"
+    = f.collection_select :priority_id, Priority.order(:title), :id, :title,{}    
+
+  .form_row
+    = f.submit

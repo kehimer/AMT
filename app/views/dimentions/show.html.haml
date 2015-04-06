@@ -1,0 +1,22 @@
+- if flash[:notice].present?
+  .notice= flash[:notice]
+
+%h2= @dimention.title
+%p
+  %strong Titulo
+  = @dimention.title
+%p
+  %strong Peso
+  = @dimention.weight
+
+- if @factors.any?
+  %table{border:"1"}
+    %tr
+      %th Titulo
+      %th Peso
+    = render partial: "factors", collection: @factors
+- else
+  %em No hay factores para esta dimension
+
+
+%p= link_to "Editar", edit_dimention_path(@dimention)

@@ -1,0 +1,15 @@
+- if @notice.present?
+  %p= @notice
+
+= form_for @priority do |f|
+
+  .form_row
+    = f.label :title, "Titulo"
+    = f.text_field :title
+
+  .form_row
+    = f.label :weight, "Peso"
+    = f.text_field :weight
+
+  .form_row
+    = f.submit

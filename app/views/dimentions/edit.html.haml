@@ -1,0 +1,8 @@
+= render partial: "shared/errors", locals: {obj: @dimention}
+
+%h2 Editar la dimension
+
+%p Ingresa los datos de la dimension a editar
+= render "form"
+
+%p= link_to "Borrar", dimention_path(@dimention), method: :delete

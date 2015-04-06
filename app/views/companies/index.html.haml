@@ -4,7 +4,7 @@
 - if flash[:notice].present?
   .notice= flash[:notice]
 
-- if @companys.any?
+- if @companies.any?
   %table{border: "1"}
     %tr
       %th Nombre
@@ -12,7 +12,7 @@
       %th Ciudad
       %th Telefono
       %th 
-    = render @companys
+    = render @companies
 - else
   %em No hay ninguna empresa agregada
 

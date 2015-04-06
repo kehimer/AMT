@@ -1,2 +1,0 @@
-class PrioritysController < ApplicationController
-end

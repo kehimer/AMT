@@ -1,0 +1,16 @@
+%h2 Prioridades
+%p Listado de Prioridades
+
+- if flash[:notice].present?
+  .notice= flash[:notice]
+
+- if @priorities.any?
+  %table{border: "1"}
+    %tr
+      %th Titulo
+      %th Peso
+    = render @priorities
+- else
+  %em No hay ninguna prioridad agregada
+
+%p= link_to "Nueva Prioridad", new_priority_path
