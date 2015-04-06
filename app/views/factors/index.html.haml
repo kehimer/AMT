@@ -5,13 +5,10 @@
   .notice= flash[:notice]
 
 - if @factors.any?
-  %table{border: "1"}
-    %tr
-      %th Prioridad
-      %th Dimension
-      %th Titulo
-      %th Peso
-    = render @factors
+  = render partial: "shared/filter_form", locals: {form_path: factors_path}
+        
+  .js_filtered_table
+    = render partial: "table", locals: {factors: @factors}
 - else
   %em No hay ningun factor agregado
 

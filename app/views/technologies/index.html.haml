@@ -5,11 +5,9 @@
   .notice= flash[:notice]
 
 - if @technologies.any?
-  %table{border: "1"}
-    %tr
-      %th ID
-      %th Titulo
-      %th Summary
-    = render @technologies
+  = render partial: "shared/filter_form", locals: {form_path: technologies_path}
+        
+  .js_filtered_table
+    = render partial: "table", locals: {technologies: @technologies}
 - else
   %em No hay ningun tipo AMT agregado

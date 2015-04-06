@@ -2,6 +2,16 @@ class TechnologiesController < ApplicationController
 
   def index
     @technologies = Technology.order(:title)
+
+    if params[:keyword].present?
+      q = params[:keyword]
+      @technologies = @technologies.where("technologies.title LIKE '%#{q}%' OR technologies.description LIKE '%#{q}%'")
+    end
+    
+    if request.xhr?
+      render partial: "table", locals: {technologies: @technologies}
+    end
+
   end
 
   def show
@@ -44,7 +54,7 @@ class TechnologiesController < ApplicationController
 
   def destroy
     @technology = Technology.find(params[:id])
-    AmtComment.destroy_all(:technology_id => technology.id)
+    AmtComment.destroy_all(:technology_id => @technology.id)
     @technology.destroy
 
     redirect_to technologies_path,
